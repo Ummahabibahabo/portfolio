@@ -138,7 +138,12 @@ const NAV_ITEMS: NavItem[] = [
   { id: "about", name: "About Me", href: "#about", icon: UserIcon },
   { id: "skills", name: "Skills", href: "#skills", icon: SkillsIcon },
   { id: "projects", name: "Projects", href: "#projects", icon: ProjectsIcon },
-  { id: "education", name: "Education", href: "#education", icon: EducationIcon },
+  {
+    id: "education",
+    name: "Education",
+    href: "#education",
+    icon: EducationIcon,
+  },
   { id: "contact", name: "Contact", href: "#contact", icon: ContactIcon },
 ];
 
@@ -158,7 +163,9 @@ export default function Navbar() {
       }
 
       // Track active section based on scroll position
-      const sections = NAV_ITEMS.map((item) => document.getElementById(item.id));
+      const sections = NAV_ITEMS.map((item) =>
+        document.getElementById(item.id),
+      );
       const scrollPosition = window.scrollY + 120;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -179,7 +186,10 @@ export default function Navbar() {
   }, []);
 
   // Smooth scroll handler
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleScrollTo = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
     e.preventDefault();
     setMobileMenuOpen(false);
     setActiveSection(id);
@@ -188,7 +198,8 @@ export default function Navbar() {
     if (targetElement) {
       const headerOffset = 80;
       const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -353,7 +364,7 @@ export default function Navbar() {
 
           <div className="pt-3 mt-2 border-t border-zinc-800/80 space-y-2">
             <a
-              href="/resume.pdf"
+              href="/public/resume.pdf"
               download="Umma_Habiba_Resume.pdf"
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-zinc-200 font-semibold text-sm hover:border-cyan-500/50 active:scale-98 transition-all"
             >
